@@ -1,5 +1,6 @@
 /shared
 /local-config.php
+/production-config.php
 /sql-dump-*.sql
 /content/upgrade/
 .DS_Store
