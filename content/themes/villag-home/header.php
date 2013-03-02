@@ -27,7 +27,7 @@
 
 	<?php do_atomic( 'open_body' ); // villag_home_open_body ?>
 
-	<div id="container">
+	<div class="container">
 
 		<?php get_template_part( 'menu', 'primary' ); // Loads the menu-primary.php template. ?>
 
@@ -40,8 +40,8 @@
 			<div class="wrap">
 
 				<div id="branding">
-					<?php hybrid_site_title(); ?>
-					<?php hybrid_site_description(); ?>
+					<?php //hybrid_site_title(); ?>
+					<?php //hybrid_site_description(); ?>
 				</div><!-- #branding -->
 
 				<?php get_sidebar( 'header' ); // Loads the sidebar-header.php template. ?>
@@ -66,4 +66,4 @@
 
 			<?php do_atomic( 'open_main' ); // villag_home_open_main ?>
 
-			<?php if ( current_theme_supports( 'breadcrumb-trail' ) ) breadcrumb_trail( array( 'before' => __( 'You are here:', 'villag_home' ) ) ); ?>
+			<?php //if ( current_theme_supports( 'breadcrumb-trail' ) ) breadcrumb_trail( array( 'before' => __( 'You are here:', 'villag_home' ) ) ); ?>
