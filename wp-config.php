@@ -2,10 +2,7 @@
 // ===================================================
 // Load database info and local development parameters
 // ===================================================
-if ( file_exists( dirname( __FILE__ ) . '/production-config.php' ) ) {
-	define( 'WP_LOCAL_DEV', false );
-	include( dirname( __FILE__ ) . '/production-config.php' );
-} elseif ( file_exists( dirname( __FILE__ ) . '/local-config.php' ) ) {
+if ( file_exists( dirname( __FILE__ ) . '/local-config.php' ) ) {
 	define( 'WP_LOCAL_DEV', true );
 	include( dirname( __FILE__ ) . '/local-config.php' );
 } else {
@@ -14,8 +11,9 @@ if ( file_exists( dirname( __FILE__ ) . '/production-config.php' ) ) {
 	define( 'DB_USER',				'root' );
 	define( 'DB_PASSWORD',			'root' );
 	define( 'DB_HOST',				'localhost' ); // Probably 'localhost'
-	
-	define( 'ENV_DOMAIN',			'denton.vill.ag' );
+
+	define( 'ENV_DOMAIN',			'vill.ag' );
+	define( 'PRODUCTION_DOMAIN',	'vill.ag' );
 	define( 'DOMAIN_CURRENT_SITE',	ENV_DOMAIN );
 	define( 'WP_HOME',				'http://'. ENV_DOMAIN );
 	define( 'WP_SITEURL',			'http://'. ENV_DOMAIN .'/wp' );
@@ -30,14 +28,13 @@ define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/content' );
 // =========
 // Multisite
 // =========
-define( 'PRODUCTION_DOMAIN', 'denton.vill.ag' );
 define( 'WP_ALLOW_MULTISITE', true );
-define( 'MULTISITE', true);
-define( 'SUBDOMAIN_INSTALL', false);
-define( 'PATH_CURRENT_SITE', '/');
-define( 'SITE_ID_CURRENT_SITE', 1);
-define( 'BLOG_ID_CURRENT_SITE', 1);
-
+define( 'MULTISITE', true );
+define( 'SUBDOMAIN_INSTALL', true );
+define( 'PATH_CURRENT_SITE', '/' );
+define( 'SITE_ID_CURRENT_SITE', 1 );
+define( 'BLOG_ID_CURRENT_SITE', 1 );
+define( 'SUNRISE', 'on' );
 
 // ================================================
 // You almost certainly do not want to change these
