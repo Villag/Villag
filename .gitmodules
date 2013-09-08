@@ -7,3 +7,6 @@
 [submodule "content/themes/reconstruct"]
 	path = content/themes/reconstruct
 	url = git@github.com:Villag/Reconstruct-Theme.git
+[submodule "content/plugins/reconstruct"]
+	path = content/plugins/reconstruct
+	url = git@github.com:Villag/Reconstruct-Plugin.git
