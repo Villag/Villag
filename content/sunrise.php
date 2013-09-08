@@ -1,14 +1,44 @@
 <?php
-
-if( ENV_DOMAIN == PRODUCTION_DOMAIN )
-	return false;
-
 if ( !defined( 'SUNRISE_LOADED' ) )
 	define( 'SUNRISE_LOADED', 1 );
 
 if ( defined( 'COOKIE_DOMAIN' ) ) {
 	die( 'The constant "COOKIE_DOMAIN" is defined (probably in wp-config.php). Please remove or comment out that define() line.' );
 }
+
+// let the site admin page catch the VHOST == 'no'
+$wpdb->dmtable = $wpdb->base_prefix . 'domain_mapping';
+$dm_domain = $_SERVER[ 'HTTP_HOST' ];
+
+if( ( $nowww = preg_replace( '|^www\.|', '', $dm_domain ) ) != $dm_domain )
+	$where = $wpdb->prepare( 'domain IN (%s,%s)', $dm_domain, $nowww );
+else
+	$where = $wpdb->prepare( 'domain = %s', $dm_domain );
+
+$wpdb->suppress_errors();
+$domain_mapping_id = $wpdb->get_var( "SELECT blog_id FROM {$wpdb->dmtable} WHERE {$where} ORDER BY CHAR_LENGTH(domain) DESC LIMIT 1" );
+$wpdb->suppress_errors( false );
+if( $domain_mapping_id ) {
+	$current_blog = $wpdb->get_row("SELECT * FROM {$wpdb->blogs} WHERE blog_id = '$domain_mapping_id' LIMIT 1");
+	$current_blog->domain = $_SERVER[ 'HTTP_HOST' ];
+	$current_blog->path = '/';
+	$blog_id = $domain_mapping_id;
+	$site_id = $current_blog->site_id;
+
+	define( 'COOKIE_DOMAIN', $_SERVER[ 'HTTP_HOST' ] );
+
+	$current_site = $wpdb->get_row( "SELECT * from {$wpdb->site} WHERE id = '{$current_blog->site_id}' LIMIT 0,1" );
+	$current_site->blog_id = $wpdb->get_var( "SELECT blog_id FROM {$wpdb->blogs} WHERE domain='{$current_site->domain}' AND path='{$current_site->path}'" );
+	if( function_exists( 'get_current_site_name' ) )
+		$current_site = get_current_site_name( $current_site );
+
+	define( 'DOMAIN_MAPPING', 1 );
+}
+
+
+
+
+
 
 if( !defined( 'PRODUCTION_DOMAIN' ) )
 	die( 'You must define PRODUCTION_DOMAIN' );
@@ -17,20 +47,6 @@ if (isset($_SERVER['HTTP_HOST'])) {
 	$host = $_SERVER['HTTP_HOST'];
 } elseif (isset($_SERVER['SERVER_NAME'])) {
 	$host = $_SERVER['SERVER_NAME'];
-}
-add_filter( 'login_headerurl', 'cwwp_login_logo_url' );
-/**
- * Filters the default login URL to point to the current site's homepage.
- *
- * @since 1.0.0
- *
- * @param string $url The default login logo URL
- * @return string $url The amended login logo URL
- */
-function cwwp_login_logo_url( $url ) {
-
-	return trailingslashit( get_home_url() );
-
 }
 
 /**
@@ -76,7 +92,5 @@ if ($_blog = $wpdb -> get_row($sql)) {
 	$current_site = $wpdb -> get_row($wpdb -> prepare("SELECT * from {$wpdb->site} WHERE id = %d", $site_id));
 	$current_site -> blog_id = $blog_id;
 
-	// Switch the network_home_url to the environment domain
 	$current_site = get_current_site_name($current_site);
-	$current_site->domain = ENV_DOMAIN;
 }
