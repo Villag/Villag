@@ -18,3 +18,17 @@ Villag is a community project led by citizens of Denton, TX. We make tools for o
 
 Because Villag is open source everyone is welcome to participate, but Villag does have a steering committee led by Patrick Daly, Darren Smitherman, and Dave Sims. The steering committee helps to cast Villag's vision, approve pull requests, and generally lead our community to develop great tools.
 
+## What kinda tools?
+
+* Create
+ * A directory of creatives 
+* Vote
+ * Find voting information 
+* Verb
+ * A link directory for community sites
+ * 
+... and more to come.
+
+## Just tools?
+
+Not really. What good would a village be without gatherings? Villag is a "brand" in a sense that pulls many projects and events under its wings. In Denton, Villag encapsulates a bi-weekly coffee club, a monthly OpenHack, a quarterly hackathon, and an annual Startup Weekend!
