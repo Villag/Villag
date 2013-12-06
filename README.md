@@ -1,5 +1,4 @@
 # [Villag](http://vill.ag)
-======
 
 Villag is a network of tools for communities built and used by Denton, Texans.
 
