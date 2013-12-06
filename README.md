@@ -26,7 +26,7 @@ Because Villag is open source everyone is welcome to participate, but Villag doe
  * Find voting information 
 * Verb
  * A link directory for community sites
- * 
+
 ... and more to come.
 
 ## Just tools?
