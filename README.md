@@ -32,3 +32,15 @@ Because Villag is open source everyone is welcome to participate, but Villag doe
 ## Just tools?
 
 Not really. What good would a village be without gatherings? Villag is a "brand" in a sense that pulls many projects and events under its wings. In Denton, Villag encapsulates a bi-weekly coffee club, a monthly OpenHack, a quarterly hackathon, and an annual Startup Weekend!
+
+### Events
+
+* DentonOCC (Denton Open Coffee Club)
+ * **8-9am every other Tuesday starting December 17th, 2013 @ 7 Mile Coffee**
+ * Being open, anyone interested in subjects similar to entrepreneurship, development, design and venture capital are invited.
+* Denton Jelly
+ * **10am-5pm the third Friday of each month @ Banter**
+ * Jelly is a casual working event. It's taken place in over a hundred cities where people have come together (in a person's home, a coffee shop, or an office) to work for the day.
+* OpenHack
+ * **6pm the first Wednesday of each month @ Banter**
+ * OpenHack is a meetup with a simple purpose: Code together, on anything. OpenHack works by hosting a meetup that gets programmers of any experience level together to code.
